@@ -1,0 +1,25 @@
+﻿<html>
+	<script language = "JavaScript" type = "text/JavaScript">
+		function Renme(){
+            if (confirm("Начать заново?")){
+                alert("Не надоело?");
+            }
+            else{
+                alert("Ну и правильно!");
+            }
+        }
+		function YName(){
+			delete name;
+			let name = prompt("Введите имя", '');
+            document.writeln(name);
+		}
+    </script>
+	
+    <body>
+        <p> Ваше имя? </p>
+        <script>
+		YName();
+		Renme();
+		</script>
+    </body>
+</html>
