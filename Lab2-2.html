@@ -1,0 +1,77 @@
+﻿<html>
+ <head>
+ <title></title>
+ <script src="jquery-3.6.0.min.js">
+</script>
+ <script language="JavaScript"> 
+	function doWt(){
+	$("#fn").css("border-color", "gray");
+	$("#fp").css("border-color", "gray");
+	$("#fpp").css("border-color", "gray");
+	$("#e").css("border-color", "gray");
+	$("#aa").css("border-color", "gray");
+	}
+	function doSend(){
+	doWt();
+	var v=document.user.e.value.indexOf("@",1);
+	if(document.user.fn.value=="")
+	{ 
+	alert('Вы должны заполнить поле "Ваше имя"');
+	$("#fn").css("border-color", "red");
+	}
+	if(document.user.fp.value=="")
+	{ 
+	alert('Вы должны заполнить поле "Пароль"');
+	$("#fp").css("border-color", "red");
+	}
+	if(document.user.fp.value.length < 4)
+	{ 
+	alert('Поле "Пароль" должно быть 4 и более символов');
+	$("#fp").css("border-color", "red");
+	}
+	if(document.user.fp.value != document.user.fpp.value)
+	{ 
+	alert('Поле "Пароль" и поле "Подтверждения пароля" не совпадают');
+	$("#fpp").css("border-color", "red");
+	}
+	if(document.user.e.value=="")
+	{
+	alert('Вы должны заполнить поле "E-mail"'); 
+	$("#e").css("border-color", "red");
+	}
+	if(v==-1)
+	{
+	alert('Адрес e-mail указан неверно');
+	$("#e").css("border-color", "red");
+	}
+	else {document.user.submit();
+	}
+	if(document.user.aa.value=="")
+	{
+	alert('Вы должны заполнить поле "Сообщение"');
+	$("#aa").css("border-color", "red");
+	}
+	if(document.user.aa.value.length < 10)
+	{
+	alert('Поле "Сообщение" должно быть больше 10 символов');
+	$("#aa").css("border-color", "red");
+	}
+	}
+ </script>
+</head>
+<body>
+<form name="user">
+<b>Данные</b>
+<br>Ваше имя <input id="fn" type="text" name="fn" size="30"><br>
+<br>Пароль <input id="fp" type="text" name="fp" size="30"><br>
+<br>Подтверждения пароля <input id="fpp" type="text" name="fpp" size="30"><br>
+<br>E-mail <input id="e" type="text" name="e" size="30"><br>
+<br>Тема сообщения <input id="a" type="text" name="a" size="35"><br>
+<br>Сообщение <input id="aa" type="text" name="aa" size="55"><br>
+<br>
+<input type="button" value="Отправить" onClick="doSend()">
+<input type="reset" value="Очистить">
+</form>
+</p>
+</body>
+</html> 

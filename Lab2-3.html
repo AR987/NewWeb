@@ -1,0 +1,36 @@
+﻿<html>
+ <head>
+ <meta charset="utf-8" />
+ <title></title>
+ <script src="jquery-3.6.0.min.js">
+</script>
+ <script language="JavaScript"> 
+	function left(){
+	$("#cube").css("position", "relative");
+	$("#cube").animate({right: "+=100px", 'width': '-=0px'}, 100);
+	}
+	function right(){
+	$("#cube").css("position", "relative");
+	$("#cube").animate({right: "-=100px", 'width': '-=0px'}, 100);
+	}
+	function up(){
+	$("#cube").css("position", "relative");
+	$("#cube").animate({top: "-=100px", 'height': '-=0px'}, 100);
+	}
+	function down(){
+	$("#cube").css("position", "relative");
+	$("#cube").animate({top: "+=100px", 'height': '-=0px'}, 100);
+	}
+ </script>
+</head>
+<body>
+<form name="user">
+<p><input type="button" value="Влево" onClick="left()">
+<input type="reset" value="Вправо" onClick="right()">
+<input type="reset" value="Вверх" onClick="up()">
+<input type="reset" value="Вниз" onClick="down()"></p>
+<p><img id="cube" src="img/123.png" height="100" width="100" style="margin:100px"></img></p>
+</form>
+</p>
+</body>
+</html> 

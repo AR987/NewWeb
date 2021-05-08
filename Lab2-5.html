@@ -1,0 +1,48 @@
+<html>
+ <head>
+ <title></title>
+ <script src="jquery-3.6.0.min.js">
+</script>
+</head>
+<body>
+<form>
+
+<div class="drag">
+<div id="cube">
+<img src="img/123.png" height="100" width="100" ></img>
+</div>
+</div>
+</form>
+<script>
+	let cube = document.getElementById('cube'); 
+	cube.onmousedown = function(e) { 
+	 let coords = getCoords(cube); 
+	let shiftX = e.pageX - coords.left; 
+	let shiftY = e.pageY - coords.top; 
+	cube.style.position = 'absolute'; 
+	document.body.appendChild(cube); 
+	moveAt(e); 
+	cube.style.zIndex = 1000;
+	function moveAt(e) { 
+	cube.style.left = e.pageX - shiftX + 'px'; 
+	cube.style.top = e.pageY - shiftY + 'px'; } 
+	document.onmousemove = function(e) { 
+	 moveAt(e); 
+	}; 
+	cube.onmouseup = function() { 
+	document.onmousemove = null; 
+	cube.onmouseup = null; 
+	}; 
+	} 
+	cube.ondragstart = function() { return false; }; 
+	function getCoords(elem) { 
+	let box = elem.getBoundingClientRect(); 
+	return { 
+	top: box.top + pageYOffset, 
+	left: box.left + pageXOffset 
+  }; 
+ } 
+</script>
+</p>
+</body>
+</html> 

@@ -1,0 +1,20 @@
+﻿<html>
+<head>
+	<title></title>
+</head>
+<body>
+<form>
+    <p><input type="button" onclick="change_color()" value="Изменить цвет фона"/></p>
+    </form>
+<script src="jquery-3.6.0.min.js">
+</script>
+<script>
+    function change_color() {
+	var ranC = '#'+ ('000000' + Math.floor(Math.random()*16777215).toString(16)).slice(-6);
+	$('body').css({
+      'background-color' : ranC,
+    });
+    } 
+</script>
+</body>
+</html>
