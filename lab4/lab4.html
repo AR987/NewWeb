@@ -1,278 +1,532 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Хасанов Лабораторная работа №4</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="src/jquery.css">
-	<style>
-		img {max-width: 100%;height: 140px;object-fit: cover;}
-		p {margin-bottom: 0;}
-		.tab-pane {position: relative;}
-		label.error {font-size: 12px;color: #f00;display: block;width: auto;}
-		input.error {border: 1px solid #f00;border-color: #f00 !important;box-shadow: none !important;}
-		select.error {border: 1px solid #f00;border-color: #f00 !important;box-shadow: none !important;}
-		input.valid {border: 1px solid #62d200;border-color: #62d200 !important;box-shadow: none !important;}
-		select.valid {border: 1px solid #62d200;border-color: #62d200 !important;box-shadow: none !important;}
-		input[type="checkbox"] {float: left;margin: 5px 5px 0 0;}
-	</style>
-</head>
-<body>
+  <head>
+    <title>название</title>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+      integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="src/jquery.css" />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+      img {
+        max-width: 100%;
+        height: 140px;
+        object-fit: cover;
+      }
+      p {
+        margin-bottom: 0;
+      }
+      .tab-pane {
+        position: relative;
+      }
+      label.error {
+        font-size: 12px;
+        color: #f00;
+        display: block;
+        width: auto;
+      }
+      input.error {
+        border: 1px solid #f00;
+        border-color: #f00 !important;
+        box-shadow: none !important;
+      }
+      select.error {
+        border: 1px solid #f00;
+        border-color: #f00 !important;
+        box-shadow: none !important;
+      }
+      input.valid {
+        border: 1px solid #62d200;
+        border-color: #62d200 !important;
+        box-shadow: none !important;
+      }
+      select.valid {
+        border: 1px solid #62d200;
+        border-color: #62d200 !important;
+        box-shadow: none !important;
+      }
+      input[type="checkbox"] {
+        float: left;
+        margin: 5px 5px 0 0;
+      }
+    </style>
+  </head>
+  <script>
+    var $j = jQuery.noConflict();
+    $j.datepicker.regional["ru"] = {
+      closeText: "Закрыть",
+      prevText: "Предыдущий",
+      nextText: "Следующий",
+      currentText: "Сегодня",
+      monthNames: [
+        "Январь",
+        "Февраль",
+        "Март",
+        "Апрель",
+        "Май",
+        "Июнь",
+        "Июль",
+        "Август",
+        "Сентябрь",
+        "Октябрь",
+        "Ноябрь",
+        "Декабрь",
+      ],
+      monthNamesShort: [
+        "Янв",
+        "Фев",
+        "Мар",
+        "Апр",
+        "Май",
+        "Июн",
+        "Июл",
+        "Авг",
+        "Сен",
+        "Окт",
+        "Ноя",
+        "Дек",
+      ],
+      dayNames: [
+        "воскресенье",
+        "понедельник",
+        "вторник",
+        "среда",
+        "четверг",
+        "пятница",
+        "суббота",
+      ],
+      dayNamesShort: ["вск", "пнд", "втр", "срд", "чтв", "птн", "сбт"],
+      dayNamesMin: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+      weekHeader: "Не",
+      dateFormat: "dd.mm.yy",
+      firstDay: 1,
+      isRTL: false,
+      showMonthAfterYear: false,
+      yearSuffix: "",
+    };
+    $j.datepicker.setDefaults($j.datepicker.regional["ru"]);
+    $j(function () {
+      $j("#datepicker").datepicker({
+        minDate: 0,
+      });
+      $j("#datepicker").datepicker($j.datepicker.regional["ru"]);
+    });
+  </script>
+  <body>
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-lg-6 offset-lg-3">
+          <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#tab1"
+                >Тур 1</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tab2">Тур 2</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#tab3">Тур 3</a>
+            </li>
+          </ul>
+          <div class="tab-content">
+            <div
+              class="
+                tab-pane
+                border-left border-right border-bottom
+                fade
+                show
+                active
+                p-3
+              "
+              id="tab1"
+            >
+              <div class="row">
+                <div class="col-lg-4">
+                  <img
+                    src="https://туры-из-волгограда.рф/wp-content/uploads/2017/01/3-1024x683.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="col-lg-8">
+                  <p>Описание тура 1.</p>
+                </div>
+                <div class="col-lg-4 mt-3 text-center">
+                  <h3>1000 р.</h3>
+                </div>
+                <div class="col-lg-8 mt-3 text-center">
+                  <button
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#uiModal"
+                  >
+                    Заказать тур
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane border-left border-right border-bottom fade p-3"
+              id="tab2"
+            >
+              <div class="row">
+                <div class="col-lg-4">
+                  <img
+                    src="https://toursfera.com/wp-content/uploads/2019/11/fant-et.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="col-lg-8">
+                  <p>Описание тура 2.</p>
+                </div>
+                <div class="col-lg-4 mt-3 text-center">
+                  <h3>2000 р.</h3>
+                </div>
+                <div class="col-lg-8 mt-3 text-center">
+                  <button
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#uiModal"
+                  >
+                    Заказать тур
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div
+              class="tab-pane border-left border-right border-bottom fade p-3"
+              id="tab3"
+            >
+              <div class="row">
+                <div class="col-lg-4">
+                  <img
+                    src="https://sun9-42.userapi.com/c633826/v633826425/392a7/eY6KqoiQj3M.jpg"
+                    alt=""
+                  />
+                </div>
+                <div class="col-lg-8">
+                  <p>Описание тура 3.</p>
+                </div>
+                <div class="col-lg-4 mt-3 text-center">
+                  <h3>3000 р.</h3>
+                </div>
+                <div class="col-lg-8 mt-3 text-center">
+                  <button
+                    class="btn btn-primary"
+                    data-toggle="modal"
+                    data-target="#uiModal"
+                  >
+                    Заказать тур
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	<div class="container">
-		<div class="row mt-5">
-			<div class="col-lg-6 offset-lg-3">
-				<ul class="nav nav-tabs">
-					<li class="nav-item">
-						<a class="nav-link active" data-toggle="tab" href="#tab1">Тур 1</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#tab2">Тур 2</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#tab3">Тур 3</a>
-					</li>
-				</ul>
-				<div class="tab-content">
-					<div class="tab-pane border-left border-right border-bottom fade show active p-3" id="tab1">
-						<div class="row">
-							<div class="col-lg-4">
-								<img src="https://туры-из-волгограда.рф/wp-content/uploads/2017/01/3-1024x683.jpg" alt="">
-							</div>
-							<div class="col-lg-8">
-								<p>Описание тура 1.</p>
-							</div>
-							<div class="col-lg-4 mt-3 text-center">
-								<h3>1000 р.</h3>
-							</div>
-							<div class="col-lg-8 mt-3 text-center">
-								<button class="btn btn-primary" data-toggle="modal" data-target="#uiModal">Заказать тур</button>
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane border-left border-right border-bottom fade p-3" id="tab2">
-						<div class="row">
-							<div class="col-lg-4">
-								<img src="https://toursfera.com/wp-content/uploads/2019/11/fant-et.jpg" alt="">
-							</div>
-							<div class="col-lg-8">
-								<p>Описание тура 2.</p>
-							</div>
-							<div class="col-lg-4 mt-3 text-center">
-								<h3>2000 р.</h3>
-							</div>
-							<div class="col-lg-8 mt-3 text-center">
-								<button class="btn btn-primary" data-toggle="modal" data-target="#uiModal">Заказать тур</button>
-							</div>
-						</div>
-					</div>
-					<div class="tab-pane border-left border-right border-bottom fade p-3" id="tab3">
-						<div class="row">
-							<div class="col-lg-4">
-								<img src="https://sun9-42.userapi.com/c633826/v633826425/392a7/eY6KqoiQj3M.jpg" alt="">
-							</div>
-							<div class="col-lg-8">
-								<p>Описание тура 3.</p>
-							</div>
-							<div class="col-lg-4 mt-3 text-center">
-								<h3>3000 р.</h3>
-							</div>
-							<div class="col-lg-8 mt-3 text-center">
-								<button class="btn btn-primary" data-toggle="modal" data-target="#uiModal">Заказать тур</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div
+      class="modal fade"
+      id="uiModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="" method="post" id="order_form">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Заказать тур</h5>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label>Ф.И.О.</label>
+                <input type="text" name="fio" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label>Количество: <span id="range1">50</span></label>
+                <input
+                  type="range"
+                  id="count"
+                  class="form-control"
+                  name="rangeInput"
+                  min="0"
+                  max="100"
+                  oninput="updateRangeValue('range1', this.value);"
+                />
+              </div>
+              <div class="form-group">
+                <label>Дата</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="date"
+                  id="datepicker"
+                />
+              </div>
+              <div class="form-group">
+                <label>Город</label>
+                <select class="form-control" name="city">
+                  <option value=""></option>
+                  <option value="Сочи">Сочи</option>
+                  <option value="Геленджик">Геленджик</option>
+                  <option value="Анапа">Анапа</option>
+                  <option value="Москва">Москва</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Адрес</label>
+                <input
+                  class="form-control"
+                  name="address"
+                  id="autoc"
+                  type="text"
+                />
+              </div>
+              <div class="form-group">
+                <label>Промокод</label>
+                <div class="input-group">
+                  <input type="text" name="promo" class="form-control" />
+                  <div class="input-group-append">
+                    <span
+                      class="input-group-text"
+                      id="tooltip"
+                      title="Текст всплывающей подсказки"
+                      >?</span
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Цена</label>
+                <input
+                  type="text"
+                  name="price"
+                  id="price"
+                  class="form-control numeric"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  >Примите условия и соглашения<input
+                    type="checkbox"
+                    name="checkbox"
+                    id="checkbox"
+                /></label>
+              </div>
+              <div class="form-group">
+                <label>Итоговая сумма</label>
+                <input
+                  type="text"
+                  id="sum"
+                  class="form-control numeric"
+                  readonly
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-dismiss="modal"
+              >
+                Отмена
+              </button>
+              <button type="submit" class="btn btn-primary">Оформить</button>
+            </div>
+            <input type="hidden" name="modal" value="okModal" />
+          </form>
+        </div>
+      </div>
+    </div>
 
-	<div class="modal fade" id="uiModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<form action="" method="post" id="order_form">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Заказать тур</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="form-group">
-							<label>Ф.И.О.</label>
-							<input type="text" name="fio" class="form-control">
-						</div>
-						<div class="form-group">
-							<label>Количество: <span id="range1">50</span></label>
-							<input type="range" id="count" class="form-control" name="rangeInput" min="0" max="100" onchange="updateRangeValue('range1', this.value);">
-						</div>
-						<div class="form-group">
-							<label>Дата</label>
-							<input type="date" name="date" class="form-control">
-						</div>
-						<div class="form-group">
-							<label>Город</label>
-							<select class="form-control" name="city">
-								<option value=""></option>
-								<option value="Сочи">Сочи</option>
-								<option value="Геленджик">Геленджик</option>
-								<option value="Анапа">Анапа</option>
-								<option value="Москва">Москва</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label>Адрес</label>
-							<input class="form-control" name="address" id="autoc" type="text">
-						</div>
-						<div class="form-group">
-							<label>Промокод</label>
-							<div class="input-group">
-								<input type="text" name="promo" class="form-control">
-								<div class="input-group-append">
-									<span class="input-group-text" id="tooltip" title="Текст всплывающей подсказки">?</span>
-								</div>
-							</div>
-						</div>
-						<div class="form-group">
-							<label>Цена</label>
-							<input type="text" name="price" id="price" class="form-control numeric" autocomplete="off">
-						</div>
-						<div class="form-group">
-							<label>Примите условия и соглашения<input type="checkbox" name="checkbox" id="checkbox"></label>
-						</div>
-						<div class="form-group">
-							<label>Итоговая сумма</label>
-							<input type="text" id="sum" class="form-control numeric" readonly>
-						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
-						<button type="submit" class="btn btn-primary">Оформить</button>
-					</div>
-					<input type="hidden" name="modal" value="okModal">
-				</form>
-			</div>
-		</div>
-	</div>
+    <div
+      class="modal fade"
+      id="okModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Оформить тур?</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>
+              Совершая оформление тура Вы подтверждаете согласие с условиями
+              нашего договора-оферты
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Ни за что!
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              data-toggle="modal"
+              data-target="#doneModal"
+            >
+              Согласен
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	<div class="modal fade" id="okModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Оформить тур?</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<p>Совершая оформление тура Вы подтверждаете согласие с условиями нашего договора-оферты</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Ни за что!</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#doneModal">Согласен</button>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div
+      class="modal fade"
+      id="doneModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Тур оформлен</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Спасибо за Ваш заказ!</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+      crossorigin="anonymous"
+    ></script>
+    <script src="src/jquery.min.js"></script>
+    <script src="src/jquery.validate.min.js"></script>
+    <script>
+      function calcSum() {
+        $("#sum").val($("#count").val() * $("#price").val());
+      }
 
-	<div class="modal fade" id="doneModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Тур оформлен</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<p>Спасибо за Ваш заказ!</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
-				</div>
-			</div>
-		</div>
-	</div>
+      function updateRangeValue(control, val) {
+        document.getElementById(control).innerHTML = val;
+        calcSum();
+      }
 
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
-	<script src="src/jquery.min.js"></script>
-	<script src="src/jquery.validate.min.js"></script>
+      $("#price").on("change keyup", function () {
+        calcSum();
+      });
 
-	<script>
-		function calcSum() {
-			$('#sum').val($('#count').val() * $('#price').val());
-		}
+      $("#tooltip").tooltip();
 
-		function updateRangeValue(control, val) {
-			document.getElementById(control).innerHTML = val;
-			calcSum();
-		}
+      $("#autoc").autoComplete({
+        minChars: 1,
+        source: function (term, suggest) {
+          term = term.toLowerCase();
+          var choices = ["ул. Иванова", "ул. Петрова", "ул. Сидорова"];
+          var matches = [];
+          for (i = 0; i < choices.length; i++)
+            if (~choices[i].toLowerCase().indexOf(term))
+              matches.push(choices[i]);
+          suggest(matches);
+        },
+      });
 
-		$('#price').on('change keyup', function() {
-			calcSum();
-		});
+      $(".numeric").each(function () {
+        $(this).bind("change keyup input click", function () {
+          if (this.value.match(/[^0-9,\,]/g)) {
+            this.value = this.value.replace(/[^0-9,\,]/g, "");
+          }
+        });
+      });
 
-		$('#tooltip').tooltip();
-
-		$('#autoc').autoComplete({
-			minChars: 1,
-			source: function(term, suggest){
-				term = term.toLowerCase();
-				var choices = ['ул. Иванова', 'ул. Петрова', 'ул. Сидорова'];
-				var matches = [];
-				for (i=0; i<choices.length; i++)
-					if (~choices[i].toLowerCase().indexOf(term)) matches.push(choices[i]);
-				suggest(matches);
-			}
-		});
-
-		$(".numeric").each(function() {
-			$(this).bind("change keyup input click", function() {
-				if (this.value.match(/[^0-9,\,]/g)) {
-					this.value = this.value.replace(/[^0-9,\,]/g, '');
-				}
-			});
-		});
-
-		$(document).ready(function () {
-			$('#order_form').validate({
-				rules: {
-					fio: {
-						required: true,
-					},
-					date: {
-						required: true,
-					},
-					city: {
-						required: true,
-					},
-					address: {
-						required: true,
-					},
-					price: {
-						required: true,
-					},
-					checkbox: {
-						required: true,
-					},
-				},
-				messages: {
-					fio: "Укажите фамилию, имя и отчество",
-					date: "Выберите дату",
-					city: "Выберите город",
-					address: "Укажите адрес",
-					price: "Укажите цену",
-					checkbox: "Для оформления нужно принять условия и соглашение",
-				},
-				submitHandler: function(form) {
-					$('#uiModal').modal('hide');
-					$('#okModal').modal();
-					return false;
-				}
-			});
-		});
-	</script>
-
-</body>
+      $(document).ready(function () {
+        $("#order_form").validate({
+          rules: {
+            fio: {
+              required: true,
+            },
+            date: {
+              required: true,
+            },
+            city: {
+              required: true,
+            },
+            address: {
+              required: true,
+            },
+            price: {
+              required: true,
+            },
+            checkbox: {
+              required: true,
+            },
+          },
+          messages: {
+            fio: "Укажите фамилию, имя и отчество",
+            date: "Выберите дату",
+            city: "Выберите город",
+            address: "Укажите адрес",
+            price: "Укажите цену",
+            checkbox: "Для оформления нужно принять условия и соглашение",
+          },
+          submitHandler: function (form) {
+            $("#uiModal").modal("hide");
+            $("#okModal").modal();
+            return false;
+          },
+        });
+      });
+    </script>
+  </body>
 </html>
