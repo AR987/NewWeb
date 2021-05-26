@@ -1,3 +1,4 @@
+(function($){
 jQuery.fn.myPlugin = function(){
 	var settings = {
 				"level1": {
@@ -123,4 +124,5 @@ jQuery.fn.myPlugin = function(){
 					});
 				}
 			});
-};
+		};
+})(jQuery);
